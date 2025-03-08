@@ -9,7 +9,7 @@ import ru.hogwarts.school.service.StudentService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("student")
 public class StudentController {
     private final StudentService studentService;
 
@@ -26,8 +26,8 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
-    @PostMapping("{id}")
-    public Student creareStudent(@RequestBody Student student) {
+    @PostMapping
+    public Student createStudent(@RequestBody Student student) {
         return studentService.addStudent(student);
     }
 
@@ -50,5 +50,10 @@ public class StudentController {
     public List<Student> getAllByAge(@RequestParam int age) {
         return studentService.getAllByAge(age);
     }
+
+//    @GetMapping("findByAgeBetween")
+//    public  List<Student> findByAgeBetween(int from, int to){
+//        return studentService.findByAgeBetween(from, to);
+//    }
 }
 

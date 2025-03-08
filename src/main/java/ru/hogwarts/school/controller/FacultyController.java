@@ -27,7 +27,7 @@ public class FacultyController {
         return ResponseEntity.ok(faculty);
     }
 
-    @PostMapping("{id}")
+    @PostMapping
     public Faculty createFaculty(@RequestBody Faculty faculty) {
         return facultyService.addFaculty(faculty);
     }
@@ -51,5 +51,10 @@ public class FacultyController {
     public List<Faculty> getAllByColor(@RequestParam String color) {
         return facultyService.getAllByColor(color);
     }
+
+//    @GetMapping("findByNameIgnoreCaseOrIgnoreColorCase")
+//    public List<Faculty> findByNameIgnoreCaseOrIgnoreColorCase(String query){
+//        return facultyService.findByNameIgnoreCaseOrColorIgnoreCase(query, query);
+//    }
 
 }
