@@ -7,9 +7,11 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.hogwarts.school.model.Faculty;
 import ru.hogwarts.school.repository.FacultyRepository;
+import ru.hogwarts.school.service.impl.FacultyServiceImpl;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -111,4 +113,28 @@ class FacultyServiceImplTest {
         facultiesByColor.forEach(student -> assertEquals(color, student.getColor()));
 
     }
+
+    @Test
+    void  shouldCorrectlyFindByNameIgnoreCaseOrColorIgnoreCase() {
+
+        String searchName = "ГрИфФиНдОр";
+        String searchColor = "ЗоЛоТоЙ";
+
+        Faculty faculty1 = new Faculty();
+        faculty1.setName("Гриффиндор");
+        faculty1.setColor("Золотой");
+
+
+        List<Faculty> expectedFaculties = Arrays.asList(faculty1, faculty1);
+
+
+        when(facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(searchName, searchColor)).thenReturn(expectedFaculties);
+
+
+        List<Faculty> actualFaculties = facultyService.findByNameIgnoreCaseOrColorIgnoreCase(searchName, searchColor);
+
+
+        assertEquals(expectedFaculties, actualFaculties);
+    }
+
 }

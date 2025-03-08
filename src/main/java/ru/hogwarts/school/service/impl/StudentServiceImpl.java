@@ -1,4 +1,4 @@
-package ru.hogwarts.school.impl;
+package ru.hogwarts.school.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -54,8 +54,8 @@ public class StudentServiceImpl implements StudentService {
                 .toList();
     }
 
-//    @Override
-//    public List<Student> findByAgeBetween(int from, int to) {
-//        return studentRepository.findByAgeBetween(from, to);
-//    }
+    @Override
+    public List<Student> findByAgeBetween(int from, int to) {
+        return studentRepository.findByAgeBetween(from, to);
+    }
 }

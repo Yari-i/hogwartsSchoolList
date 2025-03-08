@@ -7,8 +7,10 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.hogwarts.school.model.Student;
 import ru.hogwarts.school.repository.StudentRepository;
+import ru.hogwarts.school.service.impl.StudentServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -109,5 +111,31 @@ class StudentServiceImplTest {
 
         assertEquals(2, studentsByAge.size());
         studentsByAge.forEach(student -> assertEquals(age, student.getAge()));
+    }
+
+    @Test
+    void shouldCorrectlyFindByAgeBetween() {
+        int fromAge = 18;
+        int toAge = 22;
+
+        Student student1 = new Student();
+        student1.setAge(19);
+
+        Student student2 = new Student();
+        student2.setAge(22);
+
+        Student student3 = new Student();
+        student3.setAge(25);
+
+        List<Student> expectedStudents = Arrays.asList(student1, student2);
+
+
+        when(studentRepository.findByAgeBetween(fromAge, toAge)).thenReturn(expectedStudents);
+
+
+        List<Student> actualStudents = studentService.findByAgeBetween(fromAge, toAge);
+
+
+        assertEquals(expectedStudents, actualStudents);
     }
 }
