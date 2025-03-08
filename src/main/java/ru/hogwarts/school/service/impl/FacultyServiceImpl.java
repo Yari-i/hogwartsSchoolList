@@ -1,4 +1,4 @@
-package ru.hogwarts.school.impl;
+package ru.hogwarts.school.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,8 +53,10 @@ public class FacultyServiceImpl implements FacultyService {
                 .toList();
     }
 
-//    @Override
-//    public List<Faculty> findByNameIgnoreCaseOrColorIgnoreCase(String name, String color) {
-//        return facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(name, color);
-//    }
+    @Override
+    public List<Faculty> findByNameIgnoreCaseOrColorIgnoreCase(String name, String color) {
+        return facultyRepository.findByNameIgnoreCaseOrColorIgnoreCase(name, color);
+   }
+
+
 }

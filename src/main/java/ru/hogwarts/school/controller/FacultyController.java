@@ -52,9 +52,9 @@ public class FacultyController {
         return facultyService.getAllByColor(color);
     }
 
-//    @GetMapping("findByNameIgnoreCaseOrIgnoreColorCase")
-//    public List<Faculty> findByNameIgnoreCaseOrIgnoreColorCase(String query){
-//        return facultyService.findByNameIgnoreCaseOrColorIgnoreCase(query, query);
-//    }
+    @GetMapping("findByNameIgnoreCaseOrIgnoreColorCase")
+    public List<Faculty> findByNameIgnoreCaseOrIgnoreColorCase(String query){
+        return facultyService.findByNameIgnoreCaseOrColorIgnoreCase(query, query);
+    }
 
 }

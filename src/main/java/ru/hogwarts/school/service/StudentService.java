@@ -15,5 +15,6 @@ public interface StudentService {
 
     List<Student> getAllByAge(int age);
 
-//    List<Student> findByAgeBetween(int from, int to);
+    List<Student> findByAgeBetween(int from, int to);
+
 }
